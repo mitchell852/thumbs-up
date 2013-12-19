@@ -19,4 +19,10 @@ describe Thumb do
 
     it { should_not be_valid }
   end
+
+  describe 'when label is too long' do
+    before { @thumb.label = 'A' * 21 }
+
+    it { should_not be_valid }
+  end
 end
