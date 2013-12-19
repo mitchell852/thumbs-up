@@ -41,6 +41,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'mocha', require: false
 end
 
 group :production do
