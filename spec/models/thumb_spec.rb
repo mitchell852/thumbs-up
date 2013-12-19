@@ -13,4 +13,10 @@ describe Thumb do
   its(:image_path) { should be_blank }
 
   it { should be_valid }
+
+  describe 'when label is blank' do
+    before { @thumb.label = '' }
+
+    it { should_not be_valid }
+  end
 end
