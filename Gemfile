@@ -5,6 +5,9 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+#twitter bootstrap
+gem 'bootstrap-sass'
+
 # Use sqlite3 as the development database for Active Record
 group :development do
   gem 'sqlite3'
