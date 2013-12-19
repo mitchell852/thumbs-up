@@ -27,4 +27,10 @@ describe Thumb do
 
     it { should_not be_valid }
   end
+
+  describe 'when row is nil' do
+    before { @thumb.row = nil }
+
+    it { should_not be_valid }
+  end
 end
