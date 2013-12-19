@@ -1,0 +1,2 @@
+class RowsController < ApplicationController
+end
