@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-ThumbsUp::Application.config.secret_key_base = 'f882497bde0c28495b7bda70a449892e2da6c1c2d27e58ceef416946f8e99b0ee569964cb33f635df33846930df70e2f6f9333a0e3d45656bc8267472dcce4c1'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+ThumbsUp::Application.config.secret_key_base = secure_token
