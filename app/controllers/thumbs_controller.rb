@@ -1,0 +1,2 @@
+class ThumbsController < ApplicationController
+end
