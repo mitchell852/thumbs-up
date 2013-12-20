@@ -42,6 +42,9 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'mocha', require: false
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :production do
