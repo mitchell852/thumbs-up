@@ -8,11 +8,6 @@ gem 'rails', '4.0.2'
 #twitter bootstrap
 gem 'bootstrap-sass'
 
-# Use sqlite3 as the development database for Active Record
-group :development do
-  gem 'sqlite3'
-end
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -40,11 +35,20 @@ group :doc do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'mocha', require: false
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+end
+
+group :test do
+  gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 group :production do
