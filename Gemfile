@@ -34,19 +34,22 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development, :test do
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'mocha', require: false
+group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
 end
 
+group :development, :test do
+  gem 'sqlite3'
+end
+
 group :test do
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'mocha', require: false
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
