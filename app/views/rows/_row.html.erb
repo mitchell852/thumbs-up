@@ -1,0 +1,4 @@
+<%= div_for row, style: 'padding-left: 50px;' do %>
+  <%= link_to "Row #{row.id}", row %>
+  <%= link_to "Delete", row, method: :delete %>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Rows</h1>
+
+<div class="rows">
+  <%= render @rows %>
+</div>
+
+<%= form_for(Row.new) do |f| %>
+  <%= f.submit 'Create new row' %>
+<% end %>
