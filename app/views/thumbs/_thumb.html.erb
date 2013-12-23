@@ -1,3 +1,4 @@
 <%= div_for thumb do %>
-  <%= "#{thumb.label} | #{thumb.image_path} | #{thumb.active}" %>
+  <%= "#{thumb.label} | #{thumb.image_path} | #{thumb.active} | " %>
+  <%= link_to 'Delete Thumb', [@row, thumb], method: :delete %>
 <% end %>
