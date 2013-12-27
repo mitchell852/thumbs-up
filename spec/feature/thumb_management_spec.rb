@@ -18,17 +18,21 @@ end
 
 feature 'user creates a new thumb' do
   row = Row.create
+  create_thumb = 'Create new thumb'
+
+  background do
+    visit row_path(row)
+    expect(page).to have_link(create_thumb)
+    click_link create_thumb
+    expect(page).to have_content("New thumb for row ##{row.id}")
+  end
 
   scenario 'with invalid info' do
-    visit new_row_thumb_path(row)
-    expect(page).to have_content("New thumb for row ##{row.id}")
     expect { click_button 'Create Thumb' }.to_not change(row.thumbs, :count)
     expect(page).to have_content("Edit thumb for row ##{row.id}")
   end
 
   scenario 'with valid info' do
-    visit new_row_thumb_path(row)
-    expect(page).to have_content("New thumb for row ##{row.id}")
     fill_in 'Label', with: 'Thumb 1'
     fill_in 'Image path', with: 'http://www.example.com/foo.png'
     check 'Active'
