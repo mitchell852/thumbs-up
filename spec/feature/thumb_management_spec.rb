@@ -5,7 +5,11 @@ feature 'user views thumb details' do
   thumb = Thumb.create(label: 'Thumb 1', image_path: 'http://foo.com/bar.png', active: true, row_id: row.id)
 
   scenario do
-    visit row_thumb_path(row, thumb)
+    visit row_path(row)
+    expect(page).to have_link(thumb.label)
+    expect(page).to have_link('delete')
+    first('.thumb').click_link("View #{thumb.label}")
+    expect(page).to have_content("Viewing thumb ##{thumb.id} for row ##{row.id}")
     expect(page).to have_content(thumb.label)
     expect(page).to have_content(thumb.image_path)
     expect(page).to have_link('Delete Thumb')
@@ -62,6 +66,6 @@ feature 'user deletes a thumb' do
 
   scenario 'by clicking delete' do
     visit row_path(row)
-    expect { first('.thumb').click_link('Delete Thumb') }.to change { row.thumbs.count }.by(-1)
+    expect { first('.thumb').click_link('delete') }.to change { row.thumbs.count }.by(-1)
   end
 end
