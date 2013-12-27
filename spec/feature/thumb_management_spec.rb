@@ -1,5 +1,17 @@
 require 'spec_helper'
 
+feature 'user views thumb details' do
+  row = Row.create
+  thumb = Thumb.create(label: 'Thumb 1', image_path: 'http://foo.com/bar.png', active: true, row_id: row.id)
+
+  scenario do
+    visit row_thumb_path(row, thumb)
+    expect(page).to have_content(thumb.label)
+    expect(page).to have_content(thumb.image_path)
+    expect(page).to have_link('Delete Thumb')
+  end
+end
+
 feature 'user creates a new thumb' do
   row = Row.create
 

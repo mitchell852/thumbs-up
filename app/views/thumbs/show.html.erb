@@ -1,1 +1,7 @@
 <%= content_tag(:h2, "Viewing thumb ##{@thumb.id} for row ##{@row.id}") %>
+
+<p>Label: <%= @thumb.label %></p>
+<p>Image Path: <%= @thumb.image_path %></p>
+<p>Active: <%= (@thumb.active) ? 'Yes' : 'No' %> </p>
+
+<%= link_to 'Delete Thumb', row_thumb_path(@row, @thumb), method: :delete %>
