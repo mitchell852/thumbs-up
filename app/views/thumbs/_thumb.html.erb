@@ -1,4 +1,4 @@
 <%= div_for thumb do %>
   <%= link_to "View #{thumb.label}", [@row, thumb] %>
-  <%= link_to '(delete)', [@row, thumb], method: :delete, confirm: 'Are you sure?', data: { active: thumb.active } %>
+  <%= link_to '(delete)', [@row, thumb], method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
