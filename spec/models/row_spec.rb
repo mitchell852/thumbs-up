@@ -4,6 +4,9 @@ describe Row do
   before { @row = Row.new }
 
   it { should respond_to(:thumbs) }
+  it { should respond_to(:title) }
+  it { should respond_to(:description) }
+  it { should respond_to(:link_url) }
 
   it 'changes the number of rows by 1 when saved' do
     expect { @row.save }.to change { Row.count }.by(1)
