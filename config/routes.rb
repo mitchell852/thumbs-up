@@ -1,5 +1,5 @@
 ThumbsUp::Application.routes.draw do
-  resources :rows, only: [:index, :show, :create, :destroy] do
+  resources :rows do
     resources :thumbs, except: [:index]
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -8,8 +8,12 @@ class RowsController < ApplicationController
   def show
   end
 
+  def new
+    @row = Row.new
+  end
+
   def create
-    @row = Row.new(params[:row])
+    @row = Row.new(row_params)
     @row.save
     redirect_to rows_path
   end
@@ -23,5 +27,9 @@ class RowsController < ApplicationController
 
     def set_row
       @row = Row.find(params[:id])
+    end
+
+    def row_params
+      params.require(:row).permit(:title, :description, :link_url)
     end
 end

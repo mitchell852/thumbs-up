@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'user views thumb details' do
-  row = Row.create
+  row = Row.create(title: 'Row title')
   thumb = Thumb.create(label: 'Thumb 1', image_path: 'http://foo.com/bar.png', active: true, row_id: row.id)
 
   scenario do
@@ -17,7 +17,7 @@ feature 'user views thumb details' do
 end
 
 feature 'user creates a new thumb' do
-  row = Row.create
+  row = Row.create(title: 'Row title')
   create_thumb = 'Create new thumb'
 
   background do
@@ -44,7 +44,7 @@ feature 'user creates a new thumb' do
 end
 
 feature 'user edits a thumb' do
-  row = Row.create
+  row = Row.create(title: 'Row title')
   thumb = Thumb.create(label: 'Thumb 1', row_id: row.id)
 
   scenario 'with invalid info' do
@@ -65,7 +65,7 @@ feature 'user edits a thumb' do
 end
 
 feature 'user deletes a thumb' do
-  row = Row.create
+  row = Row.create(title: 'Row title')
   Thumb.create(label: 'Thumb 1', row_id: row.id)
 
   scenario 'by clicking delete' do

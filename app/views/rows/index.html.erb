@@ -4,6 +4,4 @@
   <%= render @rows %>
 </div>
 
-<%= form_for(Row.new) do |f| %>
-  <%= f.submit 'Create new row' %>
-<% end %>
+<%= link_to 'Create new row', new_row_path %>

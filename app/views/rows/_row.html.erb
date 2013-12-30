@@ -1,4 +1,4 @@
 <%= div_for row, style: 'padding-left: 50px;' do %>
-  <%= link_to "Row #{row.id}", row %>
+  <%= link_to "#{row.title}", row %>
   <%= link_to "(delete)", row, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

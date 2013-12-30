@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Row do
-  before { @row = Row.new }
+  before { @row = Row.new(title: 'Row title') }
 
   it { should respond_to(:thumbs) }
   it { should respond_to(:title) }
