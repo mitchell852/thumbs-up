@@ -37,7 +37,7 @@ feature 'user creates a new thumb' do
     fill_in 'Image path', with: 'http://www.example.com/foo.png'
     check 'Active'
     expect { click_button 'Create Thumb' }.to change { row.thumbs.count}.by(1)
-    expect(page).to have_content("Row ##{row.id} thumbs")
+    expect(page).to have_content("View Row##{row.id}")
     expect(page).to have_selector('div.thumb')
   end
 

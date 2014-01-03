@@ -1,5 +1,5 @@
 class RowsController < ApplicationController
-  before_action :set_row, only: [:show, :destroy]
+  before_action :get_row, only: [:show, :edit, :update, :destroy]
 
   def index
     @rows = Row.all
@@ -18,6 +18,17 @@ class RowsController < ApplicationController
     redirect_to rows_path
   end
 
+  def edit
+  end
+
+  def update
+    if @row.update(row_params)
+      redirect_to @row
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @row.destroy
     redirect_to rows_path
@@ -25,7 +36,7 @@ class RowsController < ApplicationController
 
   private
 
-    def set_row
+    def get_row
       @row = Row.find(params[:id])
     end
 

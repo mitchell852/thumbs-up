@@ -1,0 +1,14 @@
+<h1>Edit Row#<%= @row.id %></h1>
+
+<%= form_for(@row) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :link_url %>
+  <%= f.text_field :link_url %>
+
+  <%= f.submit %>
+<% end %>

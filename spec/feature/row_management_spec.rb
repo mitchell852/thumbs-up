@@ -7,7 +7,7 @@ feature 'user views a row' do
 
   scenario 'by visiting the row path' do
     visit row_path(row)
-    expect(page).to have_content("Row ##{row.id} thumbs")
+    expect(page).to have_content("View Row##{row.id}")
     expect(page).to have_selector('div.thumb')
   end
 end
@@ -33,6 +33,33 @@ feature 'user creates a new row' do
     expect { click_button 'Create Row' }.to change { Row.count }.by(1)
     expect(page).to have_content('Row title')
   end
+end
+
+feature 'user edits a row' do
+  row = Row.create(title: 'Row title')
+
+  background do
+    visit rows_path
+    within "#row_#{row.id}" do
+      click_link '(edit)'
+    end
+    expect(page).to have_content("Edit Row##{row.id}")
+  end
+
+  scenario 'with invalid info' do
+    fill_in 'Title', with: ''
+    click_button 'Update Row'
+    expect(page).to have_content("Edit Row##{row.id}")
+  end
+
+  scenario 'with valid info' do
+    fill_in 'Title', with: 'New row title'
+    fill_in 'Description', with: 'row description'
+    fill_in 'Link url', with: 'http://www.foo.com/bar'
+    click_button 'Update Row'
+    expect(page).to have_content("View Row##{row.id}")
+  end
+
 end
 
 feature 'user deletes a row' do
