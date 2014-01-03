@@ -62,13 +62,17 @@ feature 'user edits a row' do
 
 end
 
-feature 'user deletes a row' do
-  Row.create # just so we have at least one row to show
+feature 'user deletes a row and the associated thumbs' do
+  row = Row.create(title: 'row title')
+  Thumb.create(label: 'thumb label', row: row)
+  Thumb.create(label: 'thumb label', row: row)
 
   scenario 'by clicking the delete link' do
     visit rows_path
     expect(page).to have_content('Rows')
-    expect(page).to have_selector('div.row')
-    expect { first('.row').click_link('Delete').to change { Row.count }.by(-1) }
+    within "div#row_#{row.id}" do
+      expect { click_link '(delete)' }.to change { Row.count }.by(-1)
+      expect(Thumb.where(row_id: row.id).count).should == 0
+    end
   end
 end
