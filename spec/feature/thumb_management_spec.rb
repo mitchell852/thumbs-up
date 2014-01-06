@@ -48,7 +48,13 @@ feature 'user edits a thumb' do
   thumb = Thumb.create(label: 'Thumb 1', row_id: row.id)
 
   scenario 'with invalid info' do
-    visit edit_row_thumb_path(row, thumb)
+    visit rows_path
+    within "div#row_#{row.id}" do
+      click_link row.title
+    end
+    within "div#thumb_#{thumb.id}" do
+      click_link '(edit)'
+    end
     expect(page).to have_content("Edit thumb for row ##{row.id}")
     fill_in 'Label', with: ''
     expect { click_button 'Update Thumb' }.to_not change(row.thumbs, :count)
@@ -56,7 +62,14 @@ feature 'user edits a thumb' do
   end
 
   scenario 'with valid info' do
-    visit edit_row_thumb_path(row, thumb)
+    visit rows_path
+    within "div#row_#{row.id}" do
+      click_link row.title
+    end
+    within "div#thumb_#{thumb.id}" do
+      click_link thumb.label
+    end
+    click_link 'Edit Thumb'
     expect(page).to have_content("Edit thumb for row ##{row.id}")
     fill_in 'Label', with: 'Poppycock'
     expect { click_button 'Update Thumb' }.to_not change(row.thumbs, :count)
