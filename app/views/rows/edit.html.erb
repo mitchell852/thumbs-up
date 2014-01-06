@@ -1,26 +1,7 @@
 <div class="row">
   <div class="span6 offset3">
-    <h1>Edit Row#<%= @row.id %></h1>
-    <%= form_for(@row) do |f| %>
-      <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-      </div>
-
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_field :description %>
-      </div>
-
-      <div class="field">
-        <%= f.label :link_url %>
-        <%= f.text_field :link_url %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-  <% end %>
+    <%= content_tag :h1, "Edit Row##{@row.id}" %>
+    <%= render 'rows/form' %>
   </div>
 </div>
 
