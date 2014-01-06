@@ -3,6 +3,8 @@
 <p>Description:<br><%= @row.description %></p>
 <p>Link url: <%= @row.link_url %></p>
 
+<%= link_to 'Edit Row', edit_row_path(@row) %>
+
 <div class="thumbs">
   <%= render @row.thumbs %>
 </div>

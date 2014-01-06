@@ -41,19 +41,24 @@ feature 'user edits a row' do
 
   background do
     visit rows_path
-    within "#row_#{row.id}" do
-      click_link '(edit)'
-    end
-    expect(page).to have_content("Edit Row##{row.id}")
   end
 
   scenario 'with invalid info' do
+    within "div#row_#{row.id}" do
+      click_link '(edit)'
+    end
+    expect(page).to have_content("Edit Row##{row.id}")
     fill_in 'Title', with: ''
     click_button 'Update Row'
     expect(page).to have_content("Edit Row##{row.id}")
   end
 
   scenario 'with valid info' do
+    within "div#row_#{row.id}" do
+      click_link row.title
+    end
+    click_link 'Edit Row'
+    expect(page).to have_content("Edit Row##{row.id}")
     fill_in 'Title', with: 'New row title'
     fill_in 'Description', with: 'row description'
     fill_in 'Link url', with: 'http://www.foo.com/bar'
