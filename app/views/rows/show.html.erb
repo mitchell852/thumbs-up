@@ -5,6 +5,8 @@
 
 <%= link_to 'Edit Row', edit_row_path(@row) %>
 
+<%= content_tag :h3, "Row thumbs" %>
+
 <div class="thumbs">
   <%= render @row.thumbs %>
 </div>
