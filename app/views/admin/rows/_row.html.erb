@@ -1,0 +1,5 @@
+<%= div_for row, style: 'padding-left: 50px;' do %>
+  <%= link_to "#{row.title}", [:admin, row] %>
+  <%= link_to '(edit)', edit_admin_row_path(row) %>
+  <%= link_to '(delete)', [:admin, row], method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

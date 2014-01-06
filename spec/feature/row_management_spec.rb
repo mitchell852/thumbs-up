@@ -6,7 +6,7 @@ feature 'user views a row' do
   Thumb.create(label: 'Thumb 2', row_id: row.id)
 
   scenario 'by visiting the row path' do
-    visit row_path(row)
+    visit admin_row_path(row)
     expect(page).to have_content("View Row##{row.id}")
     expect(page).to have_content(row.title)
     expect(page).to have_selector('div.thumb')
@@ -17,7 +17,7 @@ feature 'user creates a new row' do
   create_row = 'Create new row'
 
   background do
-    visit rows_path
+    visit admin_rows_path
     expect(page).to have_link(create_row)
     click_link create_row
     expect(page).to have_content('New row')
@@ -40,7 +40,7 @@ feature 'user edits a row' do
   row = Row.create(title: 'Row title')
 
   background do
-    visit rows_path
+    visit admin_rows_path
   end
 
   scenario 'with invalid info' do
@@ -74,7 +74,7 @@ feature 'user deletes a row and the associated thumbs' do
   Thumb.create(label: 'thumb label', row: row)
 
   scenario 'by clicking the delete link' do
-    visit rows_path
+    visit admin_rows_path
     expect(page).to have_content('Rows')
     within "div#row_#{row.id}" do
       expect { click_link '(delete)' }.to change { Row.count }.by(-1)

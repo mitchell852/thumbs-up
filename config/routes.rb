@@ -1,6 +1,8 @@
 ThumbsUp::Application.routes.draw do
-  resources :rows do
-    resources :thumbs, except: [:index]
+  namespace :admin do
+    resources :rows do
+      resources :thumbs, except: [:index]
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

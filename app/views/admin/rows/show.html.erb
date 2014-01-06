@@ -3,7 +3,7 @@
 <p>Description:<br><%= @row.description %></p>
 <p>Link url: <%= @row.link_url %></p>
 
-<%= link_to 'Edit Row', edit_row_path(@row) %>
+<%= link_to 'Edit Row', edit_admin_row_path(@row) %>
 
 <%= content_tag :h3, "Row thumbs" %>
 
@@ -11,4 +11,4 @@
   <%= render @row.thumbs %>
 </div>
 
-<%= link_to 'Create new thumb', new_row_thumb_path(@row) %>
+<%= link_to 'Create new thumb', new_admin_row_thumb_path(@row) %>

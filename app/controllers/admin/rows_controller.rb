@@ -1,4 +1,4 @@
-class RowsController < ApplicationController
+class Admin::RowsController < ApplicationController
   before_action :get_row, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -15,7 +15,7 @@ class RowsController < ApplicationController
   def create
     @row = Row.new(row_params)
     @row.save
-    redirect_to rows_path
+    redirect_to admin_rows_path
   end
 
   def edit
@@ -23,7 +23,7 @@ class RowsController < ApplicationController
 
   def update
     if @row.update(row_params)
-      redirect_to @row
+      redirect_to [:admin, @row]
     else
       render 'edit'
     end
@@ -31,7 +31,7 @@ class RowsController < ApplicationController
 
   def destroy
     @row.destroy
-    redirect_to rows_path
+    redirect_to admin_rows_path
   end
 
   private

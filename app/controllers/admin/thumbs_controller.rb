@@ -1,4 +1,4 @@
-class ThumbsController < ApplicationController
+class Admin::ThumbsController < ApplicationController
   before_action :get_row
   before_action :get_thumb, only: [:show, :edit, :update, :destroy]
 
@@ -10,7 +10,7 @@ class ThumbsController < ApplicationController
 
   def update
     if @thumb.update(thumb_params)
-      redirect_to [@row, @thumb]
+      redirect_to [:admin, @row, @thumb]
     else
       render 'edit'
     end
@@ -23,7 +23,7 @@ class ThumbsController < ApplicationController
   def create
     @thumb = @row.thumbs.new(thumb_params)
     if @thumb.save
-      redirect_to @row
+      redirect_to [:admin, @row]
     else
       render 'edit'
     end
@@ -31,7 +31,7 @@ class ThumbsController < ApplicationController
 
   def destroy
     @thumb.destroy
-    redirect_to row_path(@row)
+    redirect_to [:admin, @row]
   end
 
   private

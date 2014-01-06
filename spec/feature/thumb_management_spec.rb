@@ -5,7 +5,7 @@ feature 'user views thumb details' do
   thumb = Thumb.create(label: 'Thumb 1', image_path: 'http://foo.com/bar.png', active: true, row_id: row.id)
 
   scenario do
-    visit row_path(row)
+    visit admin_row_path(row)
     expect(page).to have_link(thumb.label)
     expect(page).to have_link('delete')
     first('.thumb').click_link("View #{thumb.label}")
@@ -21,7 +21,7 @@ feature 'user creates a new thumb' do
   create_thumb = 'Create new thumb'
 
   background do
-    visit row_path(row)
+    visit admin_row_path(row)
     expect(page).to have_link(create_thumb)
     click_link create_thumb
     expect(page).to have_content("New thumb for row ##{row.id}")
@@ -48,7 +48,7 @@ feature 'user edits a thumb' do
   thumb = Thumb.create(label: 'Thumb 1', row_id: row.id)
 
   scenario 'with invalid info' do
-    visit rows_path
+    visit admin_rows_path
     within "div#row_#{row.id}" do
       click_link row.title
     end
@@ -62,7 +62,7 @@ feature 'user edits a thumb' do
   end
 
   scenario 'with valid info' do
-    visit rows_path
+    visit admin_rows_path
     within "div#row_#{row.id}" do
       click_link row.title
     end
@@ -82,7 +82,7 @@ feature 'user deletes a thumb' do
   Thumb.create(label: 'Thumb 1', row_id: row.id)
 
   scenario 'by clicking delete' do
-    visit row_path(row)
+    visit admin_row_path(row)
     expect { first('.thumb').click_link('delete') }.to change { row.thumbs.count }.by(-1)
   end
 end

@@ -1,0 +1,5 @@
+<%= div_for thumb do %>
+  <%= link_to "View #{thumb.label}", [:admin, @row, thumb] %>
+  <%= link_to '(edit)', edit_admin_row_thumb_path(@row, thumb) %>
+  <%= link_to '(delete)', [:admin, @row, thumb], method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
