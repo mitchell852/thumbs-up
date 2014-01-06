@@ -8,6 +8,7 @@ feature 'user views a row' do
   scenario 'by visiting the row path' do
     visit row_path(row)
     expect(page).to have_content("View Row##{row.id}")
+    expect(page).to have_content(row.title)
     expect(page).to have_selector('div.thumb')
   end
 end

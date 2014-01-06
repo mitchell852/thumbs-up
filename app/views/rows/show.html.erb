@@ -1,4 +1,7 @@
-<%= content_tag(:h1, "View Row##{@row.id}") %>
+<%= content_tag :h1, "View Row##{@row.id}" %>
+<p>Title: <%= @row.title %></p>
+<p>Description:<br><%= @row.description %></p>
+<p>Link url: <%= @row.link_url %></p>
 
 <div class="thumbs">
   <%= render @row.thumbs %>
