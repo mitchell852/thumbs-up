@@ -25,6 +25,7 @@ feature 'user creates a new row' do
 
   scenario 'with invalid info' do
     expect { click_button 'Create Row' }.to_not change { Row.count }.by(1)
+    expect(page).to have_content('New row')
   end
 
   scenario 'with valid info' do

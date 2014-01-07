@@ -14,8 +14,11 @@ class Admin::RowsController < ApplicationController
 
   def create
     @row = Row.new(row_params)
-    @row.save
-    redirect_to admin_rows_path
+    if @row.save
+      redirect_to admin_rows_path
+    else
+      redirect_to new_admin_row_path
+    end
   end
 
   def edit
@@ -25,7 +28,7 @@ class Admin::RowsController < ApplicationController
     if @row.update(row_params)
       redirect_to [:admin, @row]
     else
-      render 'edit'
+      redirect_to edit_admin_row_path(@row)
     end
   end
 
