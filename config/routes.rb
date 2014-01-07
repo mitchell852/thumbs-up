@@ -1,5 +1,6 @@
 ThumbsUp::Application.routes.draw do
   namespace :admin do
+    root to: 'rows#index'
     resources :rows do
       resources :thumbs, except: [:index]
     end
