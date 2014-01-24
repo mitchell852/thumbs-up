@@ -39,7 +39,7 @@ feature 'user edits a row' do
   row = FactoryGirl.create(:row)
 
   background do
-    visit admin_rows_path
+    visit admin_root_path
   end
 
   scenario 'with invalid info' do
