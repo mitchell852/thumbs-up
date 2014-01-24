@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 feature 'user views a row' do
-  row = Row.create(title: 'Row title')
-  Thumb.create(label: 'Thumb 1', row_id: row.id)
-  Thumb.create(label: 'Thumb 2', row_id: row.id)
+  thumb = FactoryGirl.create(:thumb)
 
   scenario 'by visiting the row path' do
-    visit admin_row_path(row)
-    expect(page).to have_content("View Row##{row.id}")
-    expect(page).to have_content(row.title)
+    visit admin_row_path(thumb.row)
+    expect(page).to have_content("View Row##{thumb.row.id}")
+    expect(page).to have_content(thumb.row.title)
     expect(page).to have_selector('div.thumb')
   end
 end
@@ -38,7 +36,7 @@ feature 'user creates a new row' do
 end
 
 feature 'user edits a row' do
-  row = Row.create(title: 'Row title')
+  row = FactoryGirl.create(:row)
 
   background do
     visit admin_rows_path
@@ -70,7 +68,7 @@ feature 'user edits a row' do
 end
 
 feature 'user deletes a row and the associated thumbs' do
-  row = Row.create(title: 'row title')
+  row = FactoryGirl.create(:row)
   Thumb.create(label: 'thumb label', row: row)
   Thumb.create(label: 'thumb label', row: row)
 
@@ -78,8 +76,9 @@ feature 'user deletes a row and the associated thumbs' do
     visit admin_rows_path
     expect(page).to have_content('Rows')
     within "div#row_#{row.id}" do
+      expect(Thumb.where(row_id: row.id).count).should be == 2
       expect { click_link '(delete)' }.to change { Row.count }.by(-1)
-      expect(Thumb.where(row_id: row.id).count).should == 0
+      expect(Thumb.where(row_id: row.id).count).should be == 0
     end
   end
 end
