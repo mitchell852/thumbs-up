@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+
+.rel {
+  position: relative;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.hidden {
+  display: none;
+}
+
