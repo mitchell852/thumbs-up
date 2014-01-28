@@ -1,4 +1,5 @@
 ThumbsUp::Application.routes.draw do
+  root to: 'rows#index'
   namespace :admin do
     root to: 'rows#index'
     resources :rows do
