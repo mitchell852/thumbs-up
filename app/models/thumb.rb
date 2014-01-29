@@ -4,4 +4,9 @@ class Thumb < ActiveRecord::Base
   belongs_to :row
 
   validates :label, presence: true, length: { maximum: 20 }, format: { with: VALID_LABEL_REGEX }
+
+  def slug
+    self.label.gsub(/\s/, '-')
+  end
+
 end

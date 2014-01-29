@@ -6,11 +6,13 @@ describe Thumb do
 
   it { should respond_to(:active) }
   it { should respond_to(:label) }
+  it { should respond_to(:slug)}
   it { should respond_to(:image_path) }
   it { should respond_to(:row) }
 
   its(:active) { should be_false }
   its(:label) { should match Thumb::VALID_LABEL_REGEX }
+  its(:slug) { should == @thumb.label.gsub(/\s/, '-') }
   its(:image_path) { should be_blank }
   its(:row) { should_not be_nil }
 

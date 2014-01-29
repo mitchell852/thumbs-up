@@ -1,4 +1,4 @@
-<%= div_for thumb, 'data-active' => thumb.active do |thumb| %>
+<%= div_for thumb, 'data-active' => thumb.active, 'data-path' => thumb.slug do |thumb| %>
   <div class="image-wrapper">
     <%= image_tag thumb.image_path %>
   </div>
