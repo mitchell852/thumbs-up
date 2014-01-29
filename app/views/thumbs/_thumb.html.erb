@@ -1,0 +1,7 @@
+<%= div_for thumb do |thumb| %>
+  <div class="image-wrapper">
+    <%= image_tag thumb.image_path %>
+  </div>
+  <%= content_tag :p, thumb.label, class: 'thumb-label' %>
+  <div class="arrow hidden"></div>
+<% end %>
