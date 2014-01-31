@@ -1,6 +1,6 @@
 <%= div_for thumb, 'data-active' => thumb.active, 'data-path' => thumb.slug do |thumb| %>
   <div class="image-wrapper">
-    <%= image_tag thumb.image_path %>
+    <%= image_tag asset_path('thumb_placeholder.jpg') %>
   </div>
   <%= content_tag :p, thumb.label, class: 'thumb-label' %>
   <div class="arrow hidden"></div>
