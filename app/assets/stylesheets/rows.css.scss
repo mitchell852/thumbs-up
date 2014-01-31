@@ -4,9 +4,13 @@
   padding-top: 20px;
 }
 
+// thumb row
+
 .thumb-row {
   padding: 0 0 0 20px;
 }
+
+// thumbs
 
 .thumb {
   position: relative;
@@ -63,4 +67,41 @@
       }
     }
   }
+}
+
+// thumb carousel
+
+.thumb-carousel-container {
+  position: relative;
+  margin: 0 20px 20px 0;
+  clear: both;
+  background-color: #ccc;
+  a.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 35px;
+    width: 35px;
+    z-index: 1;
+    background: image-url('close.png') no-repeat;
+    text-indent: -9999px;
+  }
+}
+
+.rs-carousel {
+  overflow: hidden;
+  ol, ul {
+    list-style: none;
+  }
+}
+
+.rs-carousel-pagination, .rs-carousel-action {
+  display: none;
+}
+
+.rec-zone {
+  position: relative;
+  overflow: hidden;
+  font: 13px/1.231 'underarmour', Arial, sans-serif;
+  color: #444;
 }

@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.rs.carousel.css
  *= require_tree .
  */
 
@@ -16,11 +17,14 @@
   position: relative;
 }
 
-.clearfix {
-  zoom: 1;
+.abs {
+  position: absolute;
 }
 
 .hidden {
   display: none;
 }
 
+.clearfix {
+  zoom: 1;
+}
