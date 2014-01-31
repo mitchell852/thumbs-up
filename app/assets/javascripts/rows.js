@@ -49,7 +49,7 @@ ThumbsUp = (function () {
             return false;
         });
 
-        $('a.close').click(function () {
+        $('a.close-button').click(function () {
             selectedThumbCarouselContainer.slideUp(function() {
                 $activeThumbs.find('.arrow').addClass('hidden');
                 $activeThumbs.removeClass('selected');
