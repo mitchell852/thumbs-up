@@ -6,7 +6,7 @@ class Thumb < ActiveRecord::Base
   validates :label, presence: true, length: { maximum: 20 }, format: { with: VALID_LABEL_REGEX }
 
   def slug
-    self.label.gsub(/\s/, '-')
+    self.label.gsub(/\s/, '-').downcase
   end
 
 end
