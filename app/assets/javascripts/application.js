@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.widget.js
+//= require jquery.ui.all
 //= require jquery.rs.carousel.js
 //= require turbolinks
 //= require_tree .
