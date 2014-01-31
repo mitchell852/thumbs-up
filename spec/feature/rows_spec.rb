@@ -13,7 +13,7 @@ feature 'user views rows' do
   end
 
   scenario 'by navigating to application root' do
-    visit root_path
+    visit '/rows'
     expect(page).to have_content('Thumbs Up')
     expect(page).to have_selector('.thumb-row', count: 1)
     expect(page).to have_selector('.thumb', count: 5)
