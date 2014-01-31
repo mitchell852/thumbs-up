@@ -15,4 +15,12 @@
 //= require jquery.ui.all
 //= require jquery.rs.carousel.js
 //= require turbolinks
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
 //= require_tree .
+
+$(document).ready(function () {
+    ThumbsUp.init('/rows');
+});
