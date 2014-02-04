@@ -2,6 +2,6 @@
   <div class="image-wrapper">
     <%= image_tag asset_path('thumb_placeholder.jpg') %>
   </div>
-  <%= content_tag :p, thumb.label, class: 'thumb-label' %>
+  <%= content_tag :p, thumb.label.upcase, class: 'thumb-label' %>
   <div class="arrow hidden"></div>
 <% end %>
